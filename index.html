@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b1626" />
+  <meta name="description" content="2026年11月22日至28日，两人关西红叶旅行的路线、住宿、预算与避雷决策页。" />
+  <title>关西红叶旅行手册 · 2026</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1626'/%3E%3Cpath d='M32 8l4 14 12-7-6 13 14 3-14 4 7 12-13-6-4 15-4-15-13 6 7-12-14-4 14-3-6-13 12 7z' fill='%23df4b32'/%3E%3C/svg%3E" />
+  <style>
+    :root {
+      --ink: #0b1626;
+      --ink-2: #13253c;
+      --paper: #f4f0e7;
+      --paper-2: #fbf8f1;
+      --red: #df4b32;
+      --red-dark: #9f2f22;
+      --gold: #d8ab62;
+      --mist: #c8d4df;
+      --line: rgba(15, 34, 54, .16);
+      --muted: #607080;
+      --green: #2f765d;
+      --shadow: 0 18px 60px rgba(6, 17, 31, .12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 18% 6%, rgba(216,171,98,.12), transparent 28rem),
+        linear-gradient(180deg, #e7e3da 0, var(--paper) 30rem, #eef0ef 100%);
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    button, input { font: inherit; }
+    .shell { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(8, 20, 34, .93);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .topbar-inner { min-height: 62px; display: flex; align-items: center; gap: 24px; }
+    .brand { color: white; font-weight: 760; letter-spacing: .05em; white-space: nowrap; }
+    .brand i { color: var(--red); font-style: normal; margin-right: 8px; }
+    .tabs { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+    .tab {
+      border: 0; color: #cbd4df; background: transparent; padding: 19px 14px 16px;
+      border-bottom: 3px solid transparent; cursor: pointer; white-space: nowrap;
+    }
+    .tab:hover, .tab.active { color: white; border-color: var(--red); }
+    .snapshot { margin-left: auto; color: #91a4b8; font-size: .8rem; white-space: nowrap; }
+
+    .hero {
+      min-height: 430px; color: white; display: grid; align-items: end;
+      background-image: linear-gradient(90deg, rgba(5,15,27,.98) 0%, rgba(5,15,27,.8) 34%, rgba(5,15,27,.08) 72%),
+                        url('./assets/kansai-hero.png');
+      background-size: cover; background-position: center;
+      border-bottom: 1px solid #21364e;
+    }
+    .hero-content { padding: 68px 0 44px; max-width: 720px; }
+    .eyebrow { color: #f2bf75; text-transform: uppercase; font-size: .78rem; font-weight: 800; letter-spacing: .18em; }
+    h1 { margin: 8px 0 12px; font-family: Georgia, "Noto Serif SC", serif; font-size: clamp(2.35rem, 6vw, 4.9rem); line-height: 1.03; font-weight: 650; }
+    .hero p { color: #d7e0ea; max-width: 640px; font-size: 1.06rem; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .pill { border: 1px solid rgba(255,255,255,.25); padding: 7px 12px; background: rgba(4,13,24,.48); font-size: .88rem; }
+
+    main { padding: 32px 0 72px; }
+    .panel { display: none; animation: rise .25s ease both; }
+    .panel.active { display: block; }
+    @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin: 10px 0 18px; }
+    h2 { margin: 0; font-family: Georgia, "Noto Serif SC", serif; font-size: clamp(1.6rem, 4vw, 2.5rem); line-height: 1.15; }
+    .subtle { color: var(--muted); }
+    .grid { display: grid; gap: 18px; }
+    .overview-grid { grid-template-columns: 1.4fr .9fr; }
+    .card { background: rgba(251,248,241,.92); border: 1px solid var(--line); box-shadow: var(--shadow); }
+    .card-pad { padding: 24px; }
+    .decision { border-top: 5px solid var(--red); }
+    .decision h3, .card h3 { margin: 0 0 8px; font-size: 1.05rem; }
+    .decision-options { display: grid; gap: 9px; margin-top: 18px; }
+    .choice { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; padding: 13px 14px; border: 1px solid var(--line); background: #fff; cursor: pointer; }
+    .choice:has(input:checked) { border-color: var(--red); box-shadow: inset 4px 0 var(--red); }
+    .choice small { color: var(--muted); }
+    .choice b { white-space: nowrap; }
+    input[type="radio"] { accent-color: var(--red); width: 18px; height: 18px; }
+    .primary { border: 0; background: var(--red); color: white; padding: 11px 16px; cursor: pointer; font-weight: 700; }
+    .primary:hover { background: var(--red-dark); }
+    .copy-state { margin-left: 10px; color: var(--green); font-size: .86rem; }
+
+    .route { background: var(--ink); color: white; padding: 24px; }
+    .route-line { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 20px; position: relative; }
+    .route-line::before { content: ""; position: absolute; top: 10px; left: 7%; right: 7%; height: 2px; background: linear-gradient(90deg, var(--red), var(--gold)); }
+    .stop { position: relative; padding-top: 28px; }
+    .stop::before { content: ""; position: absolute; top: 4px; left: 2px; width: 13px; height: 13px; border-radius: 50%; background: var(--gold); border: 3px solid var(--ink); box-shadow: 0 0 0 2px var(--gold); }
+    .stop b { display: block; }
+    .stop span { color: #aebdca; font-size: .82rem; }
+    .route-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .route-links a, .source-link { text-decoration: none; border: 1px solid currentColor; padding: 7px 10px; font-size: .84rem; }
+    .route-links a:hover, .source-link:hover { background: rgba(255,255,255,.1); }
+
+    .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 18px; }
+    .fact { background: var(--paper-2); padding: 20px; }
+    .fact strong { display: block; font-size: 1.45rem; line-height: 1.2; }
+    .fact span { color: var(--muted); font-size: .82rem; }
+    .risk { color: #7f241a; background: #fff0ec; border-left: 4px solid var(--red); padding: 14px 16px; margin-top: 18px; }
+
+    .timeline { position: relative; margin-left: 16px; }
+    .timeline::before { content: ""; position: absolute; left: 18px; top: 12px; bottom: 12px; width: 2px; background: #bdc7cd; }
+    .day { display: grid; grid-template-columns: 42px 112px 1fr; gap: 16px; position: relative; padding: 0 0 24px; }
+    .dot { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: var(--ink); color: white; z-index: 1; font-weight: 800; }
+    .date b { display: block; font-size: 1.05rem; }
+    .date span { color: var(--muted); font-size: .82rem; }
+    .day-body { border-top: 1px solid var(--line); padding-top: 2px; }
+    .day-body h3 { margin: 0 0 6px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin: 10px 0; }
+    .tag { font-size: .78rem; padding: 4px 8px; border: 1px solid var(--line); background: white; }
+    .tag.warn { border-color: #e7a395; color: #8d2b1e; background: #fff2ef; }
+    .tag.good { border-color: #91c6b3; color: #285f4c; background: #eff9f5; }
+
+    .hotel-grid { grid-template-columns: repeat(3, 1fr); }
+    .hotel { display: flex; flex-direction: column; min-height: 100%; background: var(--paper-2); border: 1px solid var(--line); }
+    .hotel-top { padding: 19px 20px 14px; border-bottom: 1px solid var(--line); }
+    .hotel-kicker { color: var(--red-dark); font-size: .75rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .hotel h3 { font-size: 1.12rem; margin: 5px 0; }
+    .price { font-size: 1.9rem; font-weight: 820; letter-spacing: -.03em; }
+    .price small { font-size: .78rem; color: var(--muted); font-weight: 500; }
+    .hotel-body { padding: 16px 20px 20px; display: flex; flex-direction: column; flex: 1; }
+    .hotel ul { padding-left: 18px; margin: 7px 0 16px; }
+    .hotel .source-link { margin-top: auto; align-self: flex-start; color: var(--ink); }
+    .hotel.recommended { border-color: var(--red); box-shadow: 0 14px 34px rgba(159,47,34,.13); }
+    .hotel.recommended .hotel-top { background: #fff0ec; }
+    .comparison { width: 100%; border-collapse: collapse; margin-top: 22px; background: white; }
+    .comparison th, .comparison td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    .comparison th { background: var(--ink); color: white; font-size: .82rem; }
+    .comparison tr:last-child td { border-bottom: 0; }
+
+    .budget-layout { grid-template-columns: .9fr 1.2fr; }
+    .total { background: var(--ink); color: white; padding: 26px; }
+    .total-number { font-size: clamp(2.5rem, 7vw, 4.8rem); line-height: 1; font-weight: 850; letter-spacing: -.06em; margin: 12px 0 6px; }
+    .bar { height: 12px; background: rgba(255,255,255,.14); margin: 22px 0 8px; }
+    .bar > span { display: block; height: 100%; width: 37%; background: linear-gradient(90deg, var(--red), var(--gold)); }
+    .ledger { background: white; border: 1px solid var(--line); }
+    .ledger-row { display: grid; grid-template-columns: 1fr auto; gap: 18px; padding: 14px 17px; border-bottom: 1px solid var(--line); }
+    .ledger-row:last-child { border-bottom: 0; }
+    .ledger-row span { color: var(--muted); font-size: .84rem; display: block; }
+    .notice { border: 1px dashed #9aa7b4; padding: 16px; background: rgba(255,255,255,.55); margin-top: 18px; }
+    .source-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 18px; }
+    .source-list a { background: white; border: 1px solid var(--line); padding: 12px; text-decoration: none; }
+    .source-list a:hover { border-color: var(--red); }
+    .updated { color: var(--muted); font-size: .8rem; margin-top: 24px; }
+    footer { background: var(--ink); color: #9fb0c1; padding: 24px 0; font-size: .83rem; }
+
+    @media (max-width: 900px) {
+      .snapshot { display: none; }
+      .overview-grid, .budget-layout { grid-template-columns: 1fr; }
+      .hotel-grid { grid-template-columns: 1fr 1fr; }
+      .facts { grid-template-columns: 1fr; }
+      .hero { min-height: 390px; background-position: 63% center; }
+    }
+    @media (max-width: 620px) {
+      .shell { width: min(100% - 22px, 1180px); }
+      .topbar-inner { align-items: stretch; flex-direction: column; gap: 0; padding-top: 10px; }
+      .brand { padding: 4px 3px; }
+      .tab { padding: 10px 11px 9px; }
+      .hero { min-height: 430px; background-position: 70% center; }
+      .hero-content { padding: 54px 0 30px; }
+      .hotel-grid, .source-list { grid-template-columns: 1fr; }
+      .route-line { grid-template-columns: 1fr 1fr; row-gap: 20px; }
+      .route-line::before { display: none; }
+      .day { grid-template-columns: 38px 74px 1fr; gap: 9px; }
+      .timeline { margin-left: 0; }
+      .comparison { font-size: .86rem; }
+      .comparison th:nth-child(3), .comparison td:nth-child(3) { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <div class="brand"><i>楓</i>关西 2026</div>
+      <nav class="tabs" aria-label="攻略章节">
+        <button class="tab active" data-panel="overview">总览</button>
+        <button class="tab" data-panel="itinerary">7 日路线</button>
+        <button class="tab" data-panel="stays">住宿比价</button>
+        <button class="tab" data-panel="budget">预算与准备</button>
+      </nav>
+      <div class="snapshot">价格快照 · 2026-09-20</div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="shell hero-content">
+      <div class="eyebrow">Autumn Kansai · 7 days</div>
+      <h1>从红叶到金泉，<br>走一条不绕路的关西线</h1>
+      <p>京都 3 晚 → 有马温泉 1 晚 → 大阪 2 晚，奈良作为大阪出发的一日线。价格、假期与拥挤风险均按 2026 年日期核验。</p>
+      <div class="hero-meta">
+        <span class="pill">11.22 周日 — 11.28 周六</span>
+        <span class="pill">2 人 · 1 间房</span>
+        <span class="pill">目标 ¥8,000–12,000 / 人</span>
+        <span class="pill">去程 9C6575 · 08:05</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="shell">
+    <section id="overview" class="panel active">
+      <div class="overview-grid grid">
+        <article class="card decision">
+          <div class="card-pad">
+            <div class="eyebrow" style="color:var(--red-dark)">当前决策</div>
+            <h2>京都住哪里，决定整条路线的气质</h2>
+            <p class="subtle">三项均为 11.22–11.25、2 人、3 晚实查价。选择只保存在你的设备，不会自动预订。</p>
+            <div class="decision-options">
+              <label class="choice">
+                <input type="radio" name="kyoto" value="2733" data-label="Agoda · APA京都站堀川通" checked />
+                <span><strong>交通与预算优先</strong><small>京都站步行圈，红叶旺季最省钱</small></span>
+                <b>约 ¥2,733</b>
+              </label>
+              <label class="choice">
+                <input type="radio" name="kyoto" value="3268" data-label="Airbnb · Naomi公寓" />
+                <span><strong>生活感与可靠性平衡</strong><small>洗衣机、京都站步行 10 分钟、2402 条评价</small></span>
+                <b>约 ¥3,268</b>
+              </label>
+              <label class="choice">
+                <input type="radio" name="kyoto" value="4273" data-label="Airbnb · 喜楽小舍" />
+                <span><strong>日式氛围优先</strong><small>中京区独立小屋，环境更有记忆点</small></span>
+                <b>约 ¥4,273</b>
+              </label>
+            </div>
+            <div style="margin-top:16px">
+              <button class="primary" id="copyChoice">复制我的选择</button><span class="copy-state" id="copyState" aria-live="polite"></span>
+            </div>
+          </div>
+        </article>
+
+        <aside class="route">
+          <div class="eyebrow">Route locked</div>
+          <h2>城市顺序</h2>
+          <div class="route-line">
+            <div class="stop"><b>京都</b><span>3 晚 · 红叶/和服</span></div>
+            <div class="stop"><b>有马</b><span>1 晚 · 金泉/浴衣</span></div>
+            <div class="stop"><b>大阪</b><span>2 晚 · 美食/购物</span></div>
+            <div class="stop"><b>奈良</b><span>大阪往返 · 1 日</span></div>
+          </div>
+          <div class="route-links">
+            <a href="https://www.google.com/maps/dir/Kansai+International+Airport/Kyoto/Arima+Onsen/Osaka" target="_blank" rel="noreferrer">打开主路线地图 ↗</a>
+            <a href="https://www.google.com/maps/dir/Osaka/Nara/Osaka" target="_blank" rel="noreferrer">奈良一日线 ↗</a>
+          </div>
+        </aside>
+      </div>
+
+      <div class="facts">
+        <div class="fact"><strong>11:20</strong><span>9C6575 当前公布抵达 KIX T1；以临行航司通知为准</span></div>
+        <div class="fact"><strong>12.5°C</strong><span>京都 11 月月均温；临行前 10–14 天再切换逐日预报</span></div>
+        <div class="fact"><strong>11.23</strong><span>日本“勤劳感谢日”，构成周末三连休的高峰日</span></div>
+      </div>
+      <div class="risk"><strong>排程原则：</strong>11 月 22–23 日不把清水寺、永观堂等核心红叶点塞在中午；经典东山线放到 24 日工作日，23 日采用早起岚山或外围路线。</div>
+    </section>
+
+    <section id="itinerary" class="panel">
+      <div class="section-head">
+        <div><div class="eyebrow" style="color:var(--red-dark)">Draft 01</div><h2>7 日动线骨架</h2></div>
+        <p class="subtle">先锁城市和住宿，再细化到班次、预约与餐厅营业日。</p>
+      </div>
+      <div class="timeline">
+        <article class="day"><div class="dot">22</div><div class="date"><b>周日</b><span>上海 → 京都</span></div><div class="day-body"><h3>抵达日 · 轻量夜景</h3><p>08:05 浦东 T2 起飞，当前时刻表 11:20 抵达关西机场 T1。入境后前往京都、寄存行李；傍晚选择伏见稻荷或京都站周边，不硬挤核心红叶寺院。</p><div class="tags"><span class="tag warn">日本三连休</span><span class="tag good">晚间机动</span><span class="tag">餐食：拉面/居酒屋</span></div></div></article>
+        <article class="day"><div class="dot">23</div><div class="date"><b>周一</b><span>京都西线</span></div><div class="day-body"><h3>岚山整区 · 必须早起</h3><p>把竹林当作路线的一小段，重点放在渡月桥、保津川步道与寺院；07:00 前后到达。若实时红叶偏晚，则改走较高海拔的贵船/大原。</p><div class="tags"><span class="tag warn">法定假日</span><span class="tag">红叶策略 A/B</span><span class="tag">不要只逛竹林</span></div></div></article>
+        <article class="day"><div class="dot">24</div><div class="date"><b>周二</b><span>东山和服日</span></div><div class="day-body"><h3>清水寺 → 二三年坂 → 祇园 → 永观堂夜枫</h3><p>工作日完成核心景点与两人和服拍摄。清晨先景点、再换装可避开租衣店开门后的峰值；永观堂与南禅寺相邻，作为傍晚红叶主场。</p><div class="tags"><span class="tag good">工作日</span><span class="tag">两人和服</span><span class="tag">夜间特别参拜待官宣</span></div></div></article>
+        <article class="day"><div class="dot">25</div><div class="date"><b>周三</b><span>京都 → 有马</span></div><div class="day-body"><h3>温泉旅馆就是当天目的地</h3><p>上午只安排一个京都近点，中午出发；15:00 左右入住后换浴衣、逛温泉街、泡金泉/银泉。若选择一泊二食，不再另排神户晚餐。</p><div class="tags"><span class="tag good">慢节奏</span><span class="tag">浴衣出片</span><span class="tag warn">餐食套餐尚待核价</span></div></div></article>
+        <article class="day"><div class="dot">26</div><div class="date"><b>周四</b><span>有马 → 大阪</span></div><div class="day-body"><h3>入住难波 · 南线夜生活</h3><p>退房后前往大阪、先寄存行李。下午黑门市场/心斋桥/橘子街按购物兴趣取舍，夜间道顿堀与法善寺横丁。</p><div class="tags"><span class="tag">药妆比价</span><span class="tag">服装购物</span><span class="tag">章鱼烧/大阪烧</span></div></div></article>
+        <article class="day"><div class="dot">27</div><div class="date"><b>周五</b><span>奈良往返</span></div><div class="day-body"><h3>奈良公园 → 东大寺 → 春日大社</h3><p>大阪难波出发可简化交通。重点看鹿与古寺，若红叶状态好再加入依水园/吉城园；傍晚回大阪吃烧肉或寿司。</p><div class="tags"><span class="tag good">工作日</span><span class="tag">轻装一日游</span><span class="tag">鹿仙贝注意围鹿</span></div></div></article>
+        <article class="day"><div class="dot">28</div><div class="date"><b>周六</b><span>大阪 → 上海</span></div><div class="day-body"><h3>购物收尾 · 预留 T2 转运</h3><p>根据 9C6566 最终出票时间倒推。春秋航空使用 KIX T2，需把市区到机场、T1/T2 接驳和廉航值机排队一起计算；返程时刻仍待你提供票面时间。</p><div class="tags"><span class="tag warn">返程时间待确认</span><span class="tag">免税品打包</span><span class="tag">至少提前 3 小时离市区</span></div></div></article>
+      </div>
+    </section>
+
+    <section id="stays" class="panel">
+      <div class="section-head"><div><div class="eyebrow" style="color:var(--red-dark)">Live price snapshot</div><h2>住宿短名单</h2></div><p class="subtle">人民币按 2026-09-18 IMF 代表汇率 1 USD = 6.6976 CNY 换算。</p></div>
+      <h3>京都 · 11.22–11.25 · 3 晚</h3>
+      <div class="hotel-grid grid">
+        <article class="hotel recommended"><div class="hotel-top"><div class="hotel-kicker">预算推荐 · Agoda</div><h3>APA 京都站堀川通</h3><div class="price">¥2,733 <small>USD 136 × 3，税前</small></div></div><div class="hotel-body"><ul><li>评分 8.2 / 10 · 15,392 条</li><li>位置 8.3；京都站步行圈</li><li>页面显示可免费取消</li></ul><a class="source-link" href="https://www.agoda.com/zh-cn/search?city=1784&checkIn=2026-11-22&los=3&rooms=1&adults=2&children=0" target="_blank" rel="noreferrer">打开 Agoda 搜索 ↗</a></div></article>
+        <article class="hotel"><div class="hotel-top"><div class="hotel-kicker">平衡推荐 · Airbnb</div><h3>Naomi 公寓</h3><div class="price">¥3,268 <small>USD 488 / 3 晚</small></div></div><div class="hotel-body"><ul><li>评分 4.79 / 5 · 2,402 条</li><li>京都站步行 10 分钟；独立洗衣机</li><li>1.35 米双人床；免费取消</li></ul><a class="source-link" href="https://zh.airbnb.com/rooms/51433076?adults=2&check_in=2026-11-22&check_out=2026-11-25" target="_blank" rel="noreferrer">查看房源 ↗</a></div></article>
+        <article class="hotel"><div class="hotel-top"><div class="hotel-kicker">日式整栋 · Airbnb</div><h3>福富 · 旧寿司店改造</h3><div class="price">¥3,248 <small>USD 485 / 3 晚</small></div></div><div class="hotel-body"><ul><li>评分 4.93 / 5 · 76 条</li><li>整栋民居；日式床垫</li><li>十条站步行 6 分钟；免费取消</li></ul><a class="source-link" href="https://zh.airbnb.com/rooms/867987720379983488?adults=2&check_in=2026-11-22&check_out=2026-11-25" target="_blank" rel="noreferrer">查看房源 ↗</a></div></article>
+      </div>
+
+      <h3 style="margin-top:30px">有马温泉 · 11.25–11.26 · 1 晚</h3>
+      <div class="hotel-grid grid">
+        <article class="hotel recommended"><div class="hotel-top"><div class="hotel-kicker">符合上限 · Agoda</div><h3>有马御苑</h3><div class="price">约 ¥1,540–1,600 <small>USD 230–239 / 晚</small></div></div><div class="hotel-body"><ul><li>评分 8.9 / 10 · 1,923 条；位置 9.4</li><li>金泉与银泉、日式氛围、浴衣</li><li>页面提示旺季及部分房型售罄</li><li><strong>最低价是否含晚餐尚未确认</strong></li></ul><a class="source-link" href="https://www.agoda.com/zh-cn/ryokan-arima-gyoen/hotel/kobe-jp.html?adults=2&children=0&rooms=1&checkIn=2026-11-25&los=1&currencyCode=USD" target="_blank" rel="noreferrer">查看当日房型 ↗</a></div></article>
+        <article class="hotel"><div class="hotel-top"><div class="hotel-kicker">官网价格基线</div><h3>有马御苑官方套餐</h3><div class="price">¥9,350 起 <small>每人 · 素泊常规起价</small></div></div><div class="hotel-body"><ul><li>早鸟一泊二食 ¥20,900 / 人起</li><li>含早餐 ¥13,750 / 人起</li><li>官网常规基线，不等于 11.25 实时价</li></ul><a class="source-link" href="https://en.arima-gyoen.co.jp/" target="_blank" rel="noreferrer">查看旅馆官网 ↗</a></div></article>
+        <article class="hotel"><div class="hotel-top"><div class="hotel-kicker">备选方向</div><h3>若餐食套餐超预算</h3><div class="price">日归温泉 + 大阪住</div></div><div class="hotel-body"><ul><li>保留浴衣与温泉街拍摄</li><li>晚餐回大阪做高性价比烧肉/寿司</li><li>减少一次搬行李，但仪式感下降</li></ul></div></article>
+      </div>
+
+      <h3 style="margin-top:30px">大阪 · 11.26–11.28 · 2 晚</h3>
+      <div class="hotel-grid grid">
+        <article class="hotel recommended"><div class="hotel-top"><div class="hotel-kicker">首选 · Agoda</div><h3>APA 大阪难波站前塔楼</h3><div class="price">约 ¥1,152 <small>USD 86 × 2，税前</small></div></div><div class="hotel-body"><ul><li>评分 8.6 / 10 · 29,296 条</li><li>位置 9.0；难波市中心</li><li>页面显示可免费取消</li></ul><a class="source-link" href="https://www.agoda.com/zh-cn/search?city=9590&checkIn=2026-11-26&los=2&rooms=1&adults=2&children=0" target="_blank" rel="noreferrer">打开 Agoda 搜索 ↗</a></div></article>
+        <article class="hotel"><div class="hotel-top"><div class="hotel-kicker">舒适升级</div><h3>大阪光芒酒店大厦</h3><div class="price">约 ¥2,424 <small>USD 181 × 2，税前</small></div></div><div class="hotel-body"><ul><li>评分 8.9 / 10 · 18,181 条</li><li>梅田市中心；2024 年新建</li><li>结果页未显示免费取消</li></ul></div></article>
+        <article class="hotel"><div class="hotel-top"><div class="hotel-kicker">不优先</div><h3>日本环球影城园前酒店</h3><div class="price">约 ¥2,692 <small>USD 201 × 2，税前</small></div></div><div class="hotel-body"><ul><li>评分 9.1；位置 9.7</li><li>只有确定去 USJ 才值得</li><li>当前路线已允许放弃 USJ</li></ul></div></article>
+      </div>
+
+      <table class="comparison" aria-label="住宿平台比较">
+        <thead><tr><th>平台</th><th>这次的优势</th><th>需要注意</th><th>判断</th></tr></thead>
+        <tbody>
+          <tr><td>Agoda</td><td>京都/大阪连锁酒店价格低、评价样本大</td><td>展示价可能为税前；京都宿泊税另收</td><td><strong>城市住宿优先</strong></td></tr>
+          <tr><td>Airbnb</td><td>町家、整栋、洗衣机与生活感更强</td><td>红叶旺季三晚普遍贵 ¥500–1,500</td><td><strong>只为体验感加价</strong></td></tr>
+          <tr><td>温泉旅馆官网</td><td>餐食套餐与房型信息更完整</td><td>实时库存与平台折扣不一致</td><td><strong>有马需交叉核价</strong></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="budget" class="panel">
+      <div class="section-head"><div><div class="eyebrow" style="color:var(--red-dark)">Confirmed subtotal</div><h2>已核价预算盘</h2></div><p class="subtle">饮食与外部购物按你的规则不计；未核实项目不混入“已确认”。</p></div>
+      <div class="budget-layout grid">
+        <aside class="total">
+          <div class="eyebrow">2 人已确认小计</div>
+          <div class="total-number" id="totalTwo">¥8,885</div>
+          <div id="perPerson">约 ¥4,443 / 人</div>
+          <div class="bar"><span id="budgetBar"></span></div>
+          <small>相对于总预算下限 ¥16,000 / 2 人；尚未计交通、门票、和服与可能的温泉餐食升级。</small>
+        </aside>
+        <div class="ledger">
+          <div class="ledger-row"><div><strong>往返机票</strong><span>已支付 ¥1,700 × 2</span></div><b>¥3,400</b></div>
+          <div class="ledger-row"><div><strong>京都 3 晚</strong><span id="kyotoName">Agoda · APA京都站堀川通</span></div><b id="kyotoValue">¥2,733</b></div>
+          <div class="ledger-row"><div><strong>有马 1 晚</strong><span>有马御苑当前最低价上沿；套餐待核</span></div><b>¥1,600</b></div>
+          <div class="ledger-row"><div><strong>大阪 2 晚</strong><span>APA难波站前塔楼；税前</span></div><b>¥1,152</b></div>
+          <div class="ledger-row"><div><strong>未计项目</strong><span>逐段交通、景点、两人和服、保险与通信</span></div><b>待核</b></div>
+        </div>
+      </div>
+      <div class="notice"><strong>京都宿泊税：</strong>2026-03-01 起按“每人每晚”的税前房价分档。¥6,000 以下收 ¥200；¥6,000–20,000 收 ¥400；¥20,000–50,000 收 ¥1,000；更高档位继续上升。订房页最终税费应与入住现场说明再核对。</div>
+
+      <div class="section-head" style="margin-top:34px"><div><h2>出发前准备</h2></div></div>
+      <div class="facts">
+        <div class="fact"><strong>穿搭</strong><span>京都 11 月均温 12.5°C；薄羽绒/防风层 + 可脱叠穿，和服内层避免高领露出。</span></div>
+        <div class="fact"><strong>降雨</strong><span>京都 11 月常年月降水 73.9 mm；带轻便折伞、防滑鞋，红叶夜游注意保暖。</span></div>
+        <div class="fact"><strong>航班</strong><span>去程公布抵达 KIX T1；返程春秋从 T2。9C6566 票面起飞时间仍需补充。</span></div>
+      </div>
+      <div class="source-list">
+        <a href="https://www8.cao.go.jp/chosei/shukujitsu/gaiyou.html" target="_blank" rel="noreferrer"><strong>日本内阁府</strong><br><span class="subtle">2026 法定节假日</span></a>
+        <a href="https://www.data.jma.go.jp/tcc/tcc/products/climate/climatview/graph_mkhtml_nrm.php?e=6&k=0&m=9&n=47759&r=0&s=1&y=2025" target="_blank" rel="noreferrer"><strong>日本气象厅</strong><br><span class="subtle">京都 1991–2020 气候常年值</span></a>
+        <a href="https://www.imf.org/external/np/fin/data/rms_mth.aspx?reportType=REP" target="_blank" rel="noreferrer"><strong>IMF</strong><br><span class="subtle">2026-09-18 代表汇率</span></a>
+        <a href="https://www.city.kyoto.lg.jp/gyozai/page/0000249302.html" target="_blank" rel="noreferrer"><strong>京都市</strong><br><span class="subtle">2026 宿泊税分档</span></a>
+      </div>
+      <p class="updated">下一轮待补：两人和服店实际套餐、京都夜枫特别开放、逐段交通票价、有马一泊二食房型、奈良红叶点、饮食与购物清单。</p>
+    </section>
+  </main>
+
+  <footer><div class="shell">个人旅行决策页 · 价格会随库存变化；预订前以结算页总价与取消条款为准。</div></footer>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const panels = document.querySelectorAll('.panel');
+    tabs.forEach(tab => tab.addEventListener('click', () => {
+      tabs.forEach(x => x.classList.remove('active'));
+      panels.forEach(x => x.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.panel).classList.add('active');
+      window.scrollTo({top: document.querySelector('main').offsetTop - 68, behavior: 'smooth'});
+    }));
+
+    const yen = new Intl.NumberFormat('zh-CN', {style:'currency', currency:'CNY', maximumFractionDigits:0});
+    function updateBudget() {
+      const choice = document.querySelector('input[name="kyoto"]:checked');
+      const kyoto = Number(choice.value);
+      const total = 3400 + kyoto + 1600 + 1152;
+      document.getElementById('kyotoName').textContent = choice.dataset.label;
+      document.getElementById('kyotoValue').textContent = yen.format(kyoto);
+      document.getElementById('totalTwo').textContent = yen.format(total);
+      document.getElementById('perPerson').textContent = `约 ${yen.format(total / 2)} / 人`;
+      document.getElementById('budgetBar').style.width = `${Math.min(100, total / 16000 * 100)}%`;
+    }
+    document.querySelectorAll('input[name="kyoto"]').forEach(x => x.addEventListener('change', updateBudget));
+    updateBudget();
+
+    document.getElementById('copyChoice').addEventListener('click', async () => {
+      const choice = document.querySelector('input[name="kyoto"]:checked');
+      const text = `京都住宿选择：${choice.dataset.label}，当前约 ${yen.format(Number(choice.value))}/3晚。请按这个方向继续做关西攻略。`;
+      try { await navigator.clipboard.writeText(text); document.getElementById('copyState').textContent = '已复制，可直接发给我'; }
+      catch { document.getElementById('copyState').textContent = text; }
+    });
+  </script>
+</body>
+</html>
