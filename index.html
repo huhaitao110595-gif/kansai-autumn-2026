@@ -107,6 +107,10 @@
     .fact strong { display: block; font-size: 1.45rem; line-height: 1.2; }
     .fact span { color: var(--muted); font-size: .82rem; }
     .risk { color: #7f241a; background: #fff0ec; border-left: 4px solid var(--red); padding: 14px 16px; margin-top: 18px; }
+    .departure-strip { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; margin-top: 18px; background: var(--line); border: 1px solid var(--line); }
+    .departure-step { background: var(--ink); color: white; padding: 14px 12px; min-height: 88px; }
+    .departure-step time { display: block; color: #f2bf75; font-size: 1.12rem; font-weight: 820; }
+    .departure-step span { display: block; color: #c9d4df; font-size: .78rem; line-height: 1.35; margin-top: 3px; }
 
     .timeline { position: relative; margin-left: 16px; }
     .timeline::before { content: ""; position: absolute; left: 18px; top: 12px; bottom: 12px; width: 2px; background: #bdc7cd; }
@@ -179,6 +183,7 @@
     @media (max-width: 900px) {
       .snapshot { display: none; }
       .overview-grid, .budget-layout { grid-template-columns: 1fr; }
+      .departure-strip { grid-template-columns: repeat(3, 1fr); }
       .hotel-grid { grid-template-columns: 1fr 1fr; }
       .cost-grid, .budget-note { grid-template-columns: 1fr; }
       .facts { grid-template-columns: 1fr; }
@@ -202,6 +207,7 @@
       .money-table th:nth-child(2), .money-table td:nth-child(2) { display: none; }
       .meal-day { grid-template-columns: 60px 1fr; }
       .meal-cost { grid-column: 2; }
+      .departure-strip { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -231,6 +237,7 @@
         <span class="pill">2 人 · 1 间房</span>
         <span class="pill">目标 ¥8,000–12,000 / 人</span>
         <span class="pill">去程 9C6575 · 08:05</span>
+        <span class="pill">返程 9C6566 · 15:00 · KIX T2</span>
       </div>
     </div>
   </section>
@@ -288,6 +295,14 @@
         <div class="fact"><strong>11.23</strong><span>日本“勤劳感谢日”，构成周末三连休的高峰日</span></div>
       </div>
       <div class="risk"><strong>排程原则：</strong>11 月 22–23 日不把清水寺、永观堂等核心红叶点塞在中午；经典东山线放到 24 日工作日，23 日采用早起岚山或外围路线。</div>
+      <div class="departure-strip" aria-label="11月28日返程时间轴">
+        <div class="departure-step"><time>07:30</time><span>早餐与最后整理</span></div>
+        <div class="departure-step"><time>10:30</time><span>退房、取行李</span></div>
+        <div class="departure-step"><time>10:45</time><span>离开难波酒店</span></div>
+        <div class="departure-step"><time>≤ 11:15</time><span>南海难波上车</span></div>
+        <div class="departure-step"><time>12:00–12:25</time><span>抵达 KIX T2</span></div>
+        <div class="departure-step"><time>15:00</time><span>9C6566 起飞</span></div>
+      </div>
     </section>
 
     <section id="itinerary" class="panel">
@@ -302,7 +317,7 @@
         <article class="day"><div class="dot">25</div><div class="date"><b>周三</b><span>京都 → 有马</span></div><div class="day-body"><h3>温泉旅馆就是当天目的地</h3><p>上午只安排一个京都近点；搭 15:10 京都站八条口直达巴士，16:25 到有马。优先锁有马御苑一泊二食，官方早鸟基线 ¥20,900/人，晚餐与次日早餐计入住宿预算。</p><div class="tags"><span class="tag good">慢节奏</span><span class="tag">浴衣出片</span><span class="tag">当日另付约 ¥220–260/人</span></div></div></article>
         <article class="day"><div class="dot">26</div><div class="date"><b>周四</b><span>有马 → 大阪</span></div><div class="day-body"><h3>入住难波 · 南线夜生活</h3><p>当前大阪直达有马巴士部分停运，稳妥方案采用有马→三宫巴士，再搭阪神直达大阪难波。下午黑门/心斋桥/橘子街，夜间道顿堀。</p><div class="tags"><span class="tag">药妆比价</span><span class="tag">服装购物</span><span class="tag">当日约 ¥220–270/人</span></div></div></article>
         <article class="day"><div class="dot">27</div><div class="date"><b>周五</b><span>奈良往返</span></div><div class="day-body"><h3>奈良公园 → 东大寺 → 春日大社</h3><p>从大阪难波搭近铁快速急行，单程 ¥680。东大寺大佛殿 ¥800；春日大社外苑免费，把付费重点留给古寺本身。</p><div class="tags"><span class="tag good">工作日</span><span class="tag">轻装一日游</span><span class="tag">当日约 ¥340–410/人</span></div></div></article>
-        <article class="day"><div class="dot">28</div><div class="date"><b>周六</b><span>大阪 → 上海</span></div><div class="day-body"><h3>购物收尾 · 预留 T2 转运</h3><p>难波搭南海 Rapi:t 数字票 ¥1,410 到关西机场站，再从 Aeroplaza 乘免费接驳车 7–9 分钟到 T2。返程时刻仍需按票面倒推离店时间。</p><div class="tags"><span class="tag warn">返程时间待确认</span><span class="tag">T2 免费接驳</span><span class="tag">当日约 ¥180–250/人</span></div></div></article>
+        <article class="day"><div class="dot">28</div><div class="date"><b>周六</b><span>大阪 → 上海</span></div><div class="day-body"><h3>15:00 返程 · 上午只做难波收尾</h3><p>07:30–09:30 早餐和最后补货，10:30 退房取行李，10:45 离开酒店；锁定 11:00 前后、最晚 11:15 从南海难波出发的 Rapi:t 或机场急行。预计 11:40–12:00 抵达关西机场站，再从 Aeroplaza 1F 乘免费接驳车 7–9 分钟，目标 12:00–12:25 到 T2。春秋 9C 日本出发国际线柜台通常起飞前 120 分钟开放、前 45 分钟严格截止；因此 13:00 开柜办理，14:30 前到登机口。</p><div class="tags"><span class="tag warn">15:00 起飞</span><span class="tag good">12:25 前到 T2</span><span class="tag">10:45 离开酒店</span><span class="tag">当日约 ¥160–210/人</span></div></div></article>
       </div>
     </section>
 
@@ -357,7 +372,7 @@
           <tr><td>11.25 京都 → 有马</td><td>京都市内 ¥500 + 直达高速巴士 ¥2,000</td><td>15:10 京都站八条口 → 16:25 有马温泉；提前 1 个月预约</td><td>约 ¥107</td></tr>
           <tr><td>11.26 有马 → 难波</td><td>有马→三宫巴士 ¥780；阪神三宫→大阪难波 ¥420；大阪市内 ¥240</td><td>采用当前可执行的三宫换乘，避开停运中的大阪直达班次</td><td>约 ¥61</td></tr>
           <tr><td>11.27 难波 ↔ 奈良</td><td>近铁普通票 ¥680 × 2；奈良市内留 ¥250</td><td>快速急行直达，不加购特急</td><td>约 ¥69</td></tr>
-          <tr><td>11.28 难波 → KIX T2</td><td>Rapi:t 数字票 ¥1,410；大阪市内 ¥240；T2 接驳免费</td><td>到关西机场站后步行至 Aeroplaza 1F，接驳 7–9 分钟</td><td>约 ¥70</td></tr>
+          <tr><td>11.28 难波 → KIX T2</td><td>Rapi:t 数字票 ¥1,410；大阪市内 ¥240；T2 接驳免费</td><td>10:45 离开难波酒店，最晚 11:15 上车；关西机场站后至 Aeroplaza 1F，接驳 7–9 分钟，12:25 前到 T2</td><td>约 ¥70</td></tr>
         </tbody>
       </table>
 
@@ -380,6 +395,7 @@
         <a href="https://www.keihanbus.jp/highway/line/kyoto-arima_onsen/" target="_blank" rel="noreferrer">京都—有马巴士</a>
         <a href="https://www.nankai.co.jp/en_railway/ticket/rapit" target="_blank" rel="noreferrer">南海 Rapi:t</a>
         <a href="https://www.kansai-airport.or.jp/en/access/t2/" target="_blank" rel="noreferrer">KIX T2 接驳</a>
+        <a href="https://jp.springairlines.cn/flights/service-guide-airport-traffic" target="_blank" rel="noreferrer">春秋 9C 日本出发值机</a>
         <a href="https://kyotokimonorental.com/zh-cn/plan/kimono" target="_blank" rel="noreferrer">Wargo 价格</a>
         <a href="https://www.eikando.or.jp/osirase.html" target="_blank" rel="noreferrer">永观堂 2026</a>
         <a href="https://www.kiyomizudera.or.jp/event/yakan.php" target="_blank" rel="noreferrer">清水寺 2026 夜间</a>
@@ -395,9 +411,9 @@
         <article class="meal-day"><div class="meal-date">11.25<br>有马</div><div><h3>白天轻食，把胃口留给旅馆会席</h3><p>早餐 ¥600–800；京都午餐乌冬/定食 ¥1,200–1,800；温泉街碳酸煎饼等 ¥600–900。旅馆晚餐已计入一泊二食，不重复列支。</p></div><div class="meal-cost">¥2,400–3,500</div></article>
         <article class="meal-day"><div class="meal-date">11.26<br>大阪</div><div><h3>大阪街头组合：551 + 章鱼烧 + 大阪烧</h3><p>旅馆早餐已含；551 豚包 2 个 ¥500 可两人分；章鱼烧预留 ¥700–900；千房道顿堀烧 ¥1,480 起，可两人再共享一份铁板小菜。</p></div><div class="meal-cost">¥3,200–4,800</div></article>
         <article class="meal-day"><div class="meal-date">11.27<br>奈良</div><div><h3>柿叶寿司与三轮素面，晚餐回大阪吃串炸</h3><p>平宗茶粥·柿叶膳 ¥1,940 或煮面膳 ¥2,100；奈良小食 ¥500–800；大阪晚餐串炸/居酒屋按 ¥2,500–3,500 控制。</p></div><div class="meal-cost">¥5,600–7,100</div></article>
-        <article class="meal-day"><div class="meal-date">11.28<br>返程</div><div><h3>按航班时间安排：咖啡早餐 + 难波或机场正餐</h3><p>早餐 ¥600–800；离城前用餐 ¥1,200–1,800；若航班较晚，T2 再留 ¥800–1,200。具体餐次等待 9C6566 票面时间。</p></div><div class="meal-cost">¥2,000–3,800</div></article>
+        <article class="meal-day"><div class="meal-date">11.28<br>返程</div><div><h3>07:30 早餐 + T2 午餐，不在市区排队</h3><p>早餐 ¥600–800；上午补货时只买可带走的小食。12:00–12:25 到 T2，13:00 办完值机后在航站楼吃午餐并准备机上饮水，预留 ¥1,200–1,800；春秋 9C 不把机上餐当作默认选项。</p></div><div class="meal-cost">¥1,800–2,600</div></article>
       </div>
-      <div class="notice"><strong>饮食总预算：</strong>上面逐日低高区间约 ¥25,400–35,400 日元/人，折合约 ¥1,083–1,509；再给咖啡、酒水、排队换店预留约 ¥200，按 <strong>¥1,700/人</strong> 纳入总预算。购物和伴手礼仍不计入。</div>
+      <div class="notice"><strong>饮食总预算：</strong>上面逐日低高区间约 ¥25,200–34,200 日元/人，折合约 ¥1,074–1,458；再给咖啡、酒水、排队换店预留约 ¥200，按 <strong>¥1,700/人</strong> 纳入总预算。购物和伴手礼仍不计入。</div>
       <div class="source-chips">
         <a href="https://yoshimura-gr.com/arashiyama/shop/" target="_blank" rel="noreferrer">岚山よしむら</a>
         <a href="https://yoshimura-gr.com/daimaru/menu/lunch/" target="_blank" rel="noreferrer">京都荞麦现行菜单</a>
@@ -443,7 +459,7 @@
       <div class="facts">
         <div class="fact"><strong>穿搭</strong><span>京都 11 月均温 12.5°C；薄羽绒/防风层 + 可脱叠穿，和服内层避免高领露出。</span></div>
         <div class="fact"><strong>降雨</strong><span>京都 11 月常年月降水 73.9 mm；带轻便折伞、防滑鞋，红叶夜游注意保暖。</span></div>
-        <div class="fact"><strong>航班</strong><span>去程公布抵达 KIX T1；返程春秋从 T2。9C6566 票面起飞时间仍需补充。</span></div>
+        <div class="fact"><strong>15:00 返程</strong><span>9C6566 从 KIX T2 起飞；10:45 离开难波酒店，12:25 前到 T2，13:00 开柜后办理值机。</span></div>
       </div>
       <div class="source-list">
         <a href="https://www8.cao.go.jp/chosei/shukujitsu/gaiyou.html" target="_blank" rel="noreferrer"><strong>日本内阁府</strong><br><span class="subtle">2026 法定节假日</span></a>
@@ -452,8 +468,9 @@
         <a href="https://www.city.kyoto.lg.jp/gyozai/page/0000249302.html" target="_blank" rel="noreferrer"><strong>京都市</strong><br><span class="subtle">2026 宿泊税分档</span></a>
         <a href="https://www.pref.osaka.lg.jp/o070070/toshimiryoku/syukuhakuzei/index.html" target="_blank" rel="noreferrer"><strong>大阪府</strong><br><span class="subtle">现行宿泊税分档</span></a>
         <a href="https://www.todaiji.or.jp/information/haikan/" target="_blank" rel="noreferrer"><strong>东大寺</strong><br><span class="subtle">大佛殿 2026 参拜价</span></a>
+        <a href="https://jp.springairlines.cn/flights/service-guide-airport-traffic" target="_blank" rel="noreferrer"><strong>春秋航空</strong><br><span class="subtle">9C 日本出发国际线值机时限</span></a>
       </div>
-      <p class="updated">已补齐：2026 夜枫日期、逐段交通、核心门票、两人和服与逐日餐费。下一轮只需锁定住宿房型、9C6566 起飞时间及最终餐厅预约。</p>
+      <p class="updated">已补齐：2026 夜枫日期、逐段交通、核心门票、两人和服、逐日餐费及 9C6566 返程倒推时间。下一轮只需锁定住宿房型与最终餐厅预约。</p>
     </section>
   </main>
 
