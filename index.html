@@ -177,6 +177,24 @@
     .source-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 18px; }
     .source-list a { background: white; border: 1px solid var(--line); padding: 12px; text-decoration: none; }
     .source-list a:hover { border-color: var(--red); }
+    .deal-hero { background: linear-gradient(125deg, #111d2b, #24384b); color: white; padding: 26px; border-top: 5px solid var(--gold); }
+    .deal-hero strong { color: #ffd38e; }
+    .deal-grid { grid-template-columns: repeat(3, 1fr); margin-top: 18px; }
+    .deal-card { background: white; border: 1px solid var(--line); padding: 19px; }
+    .deal-card h3 { margin: 4px 0 7px; }
+    .deal-card p { margin: 0; color: var(--muted); font-size: .88rem; }
+    .deal-status { display: inline-block; padding: 3px 8px; font-size: .72rem; font-weight: 800; letter-spacing: .06em; }
+    .deal-status.confirmed { color: #205944; background: #e6f5ee; }
+    .deal-status.likely { color: #76520c; background: #fff3ce; }
+    .deal-status.watch { color: #793126; background: #ffebe7; }
+    .shop-route { display: grid; grid-template-columns: 120px 1fr; gap: 0 18px; margin-top: 18px; }
+    .shop-time { padding: 17px 0; color: var(--red-dark); font-weight: 820; border-bottom: 1px solid var(--line); }
+    .shop-step { padding: 17px 0; border-bottom: 1px solid var(--line); }
+    .shop-step h3 { margin: 0 0 4px; font-size: 1rem; }
+    .shop-step p { margin: 0; color: var(--muted); }
+    .threshold { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 18px; }
+    .threshold > div { background: white; padding: 17px; }
+    .threshold strong { display: block; color: var(--red-dark); font-size: 1.15rem; }
     .updated { color: var(--muted); font-size: .8rem; margin-top: 24px; }
     footer { background: var(--ink); color: #9fb0c1; padding: 24px 0; font-size: .83rem; }
 
@@ -185,7 +203,8 @@
       .overview-grid, .budget-layout { grid-template-columns: 1fr; }
       .departure-strip { grid-template-columns: repeat(3, 1fr); }
       .hotel-grid { grid-template-columns: 1fr 1fr; }
-      .cost-grid, .budget-note { grid-template-columns: 1fr; }
+      .cost-grid, .budget-note, .deal-grid { grid-template-columns: 1fr; }
+      .threshold { grid-template-columns: 1fr 1fr; }
       .facts { grid-template-columns: 1fr; }
       .hero { min-height: 390px; background-position: 63% center; }
     }
@@ -208,6 +227,8 @@
       .meal-day { grid-template-columns: 60px 1fr; }
       .meal-cost { grid-column: 2; }
       .departure-strip { grid-template-columns: repeat(2, 1fr); }
+      .shop-route { grid-template-columns: 78px 1fr; gap: 0 10px; }
+      .threshold { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -221,9 +242,10 @@
         <button class="tab" data-panel="stays">住宿比价</button>
         <button class="tab" data-panel="transport">交通门票</button>
         <button class="tab" data-panel="food">每日饮食</button>
+        <button class="tab" data-panel="shopping">购物黑五</button>
         <button class="tab" data-panel="budget">总预算</button>
       </nav>
-      <div class="snapshot">价格快照 · 2026-09-20</div>
+      <div class="snapshot">信息快照 · 2026-09-27</div>
     </div>
   </header>
 
@@ -290,7 +312,7 @@
       </div>
 
       <div class="facts">
-        <div class="fact"><strong>约 ¥8,400/人</strong><span>当前完整基础预算：含机酒、交通、门票、和服、饮食与缓冲金</span></div>
+        <div class="fact"><strong>约 ¥8,500/人</strong><span>当前完整基础预算：含机酒、临空城交通、门票、和服、饮食与缓冲金</span></div>
         <div class="fact"><strong>12.5°C</strong><span>京都 11 月月均温；临行前 10–14 天再切换逐日预报</span></div>
         <div class="fact"><strong>11.23</strong><span>日本“勤劳感谢日”，构成周末三连休的高峰日</span></div>
       </div>
@@ -315,9 +337,9 @@
         <article class="day"><div class="dot">23</div><div class="date"><b>周一</b><span>京都西线</span></div><div class="day-body"><h3>岚山整区 · 必须早起</h3><p>把竹林当作路线的一小段，重点放在天龙寺、渡月桥与保津川步道；07:00 前后到达。若实时红叶偏晚，则改走较高海拔的贵船/大原。</p><div class="tags"><span class="tag warn">法定假日</span><span class="tag">红叶策略 A/B</span><span class="tag">当日约 ¥240–300/人</span></div></div></article>
         <article class="day"><div class="dot">24</div><div class="date"><b>周二</b><span>东山和服日</span></div><div class="day-body"><h3>清水寺 → 二三年坂 → 祇园 → 永观堂夜枫</h3><p>工作日完成核心景点与两人和服拍摄。2026 清水寺秋夜参拜已官宣为 11.21–30；永观堂夜间开放为 11.20–12.06，两处均已覆盖本次日期。</p><div class="tags"><span class="tag good">工作日</span><span class="tag">两人和服</span><span class="tag">当日约 ¥500–650/人</span></div></div></article>
         <article class="day"><div class="dot">25</div><div class="date"><b>周三</b><span>京都 → 有马</span></div><div class="day-body"><h3>温泉旅馆就是当天目的地</h3><p>上午只安排一个京都近点；搭 15:10 京都站八条口直达巴士，16:25 到有马。优先锁有马御苑一泊二食，官方早鸟基线 ¥20,900/人，晚餐与次日早餐计入住宿预算。</p><div class="tags"><span class="tag good">慢节奏</span><span class="tag">浴衣出片</span><span class="tag">当日另付约 ¥220–260/人</span></div></div></article>
-        <article class="day"><div class="dot">26</div><div class="date"><b>周四</b><span>有马 → 大阪</span></div><div class="day-body"><h3>入住难波 · 南线夜生活</h3><p>当前大阪直达有马巴士部分停运，稳妥方案采用有马→三宫巴士，再搭阪神直达大阪难波。下午黑门/心斋桥/橘子街，夜间道顿堀。</p><div class="tags"><span class="tag">药妆比价</span><span class="tag">服装购物</span><span class="tag">当日约 ¥220–270/人</span></div></div></article>
-        <article class="day"><div class="dot">27</div><div class="date"><b>周五</b><span>奈良往返</span></div><div class="day-body"><h3>奈良公园 → 东大寺 → 春日大社</h3><p>从大阪难波搭近铁快速急行，单程 ¥680。东大寺大佛殿 ¥800；春日大社外苑免费，把付费重点留给古寺本身。</p><div class="tags"><span class="tag good">工作日</span><span class="tag">轻装一日游</span><span class="tag">当日约 ¥340–410/人</span></div></div></article>
-        <article class="day"><div class="dot">28</div><div class="date"><b>周六</b><span>大阪 → 上海</span></div><div class="day-body"><h3>15:00 返程 · 上午只做难波收尾</h3><p>07:30–09:30 早餐和最后补货，10:30 退房取行李，10:45 离开酒店；锁定 11:00 前后、最晚 11:15 从南海难波出发的 Rapi:t 或机场急行。预计 11:40–12:00 抵达关西机场站，再从 Aeroplaza 1F 乘免费接驳车 7–9 分钟，目标 12:00–12:25 到 T2。春秋 9C 日本出发国际线柜台通常起飞前 120 分钟开放、前 45 分钟严格截止；因此 13:00 开柜办理，14:30 前到登机口。</p><div class="tags"><span class="tag warn">15:00 起飞</span><span class="tag good">12:25 前到 T2</span><span class="tag">10:45 离开酒店</span><span class="tag">当日约 ¥160–210/人</span></div></div></article>
+        <article class="day"><div class="dot">26</div><div class="date"><b>周四</b><span>有马 → 大阪南线</span></div><div class="day-body"><h3>Black Friday 主购物日 · 临空城 → 泉佐野</h3><p>有马经三宫到难波，寄存行李后直奔临空城。2026 官方 Black Friday 为 11.20–29，本日完整覆盖；先扫始祖鸟、KEEN、拉夫劳伦、鬼冢虎，再查 ASICS、Mammut，傍晚转泉佐野 2nd STREET，晚间回难波。</p><div class="tags"><span class="tag good">官方黑五期</span><span class="tag">奥莱折上折</span><span class="tag">中古捡漏</span><span class="tag">当日约 ¥300–360/人（不含购物）</span></div></div></article>
+        <article class="day"><div class="dot">27</div><div class="date"><b>周五</b><span>奈良往返</span></div><div class="day-body"><h3>奈良公园 → 东大寺 → 春日大社 → 难波补货</h3><p>从大阪难波搭近铁快速急行，单程 ¥680。东大寺大佛殿 ¥800；春日大社外苑免费。若17:30前返回，追加 Alpen Outdoors；较晚则只选 Alpen 与2nd STREET/UNIQLO之一。</p><div class="tags"><span class="tag good">工作日</span><span class="tag">奈良不取消</span><span class="tag">黑五城市补货</span><span class="tag">当日约 ¥340–410/人</span></div></div></article>
+        <article class="day"><div class="dot">28</div><div class="date"><b>周六</b><span>大阪 → 上海</span></div><div class="day-body"><h3>15:00 返程 · 上午只做难波收尾</h3><p>07:30–09:30 早餐和最后补货，10:30 退房取行李，10:45 离开酒店；锁定 11:00 前后、最晚 11:15 从南海难波出发。目标 12:00–12:25 到 T2。2026年11月起免税改为离境核验后退款：抵达后先按机场指引完成免税商品持出确认，再托运行李和办理值机；需核验的商品不要提前塞入无法取出的托运行李深处。</p><div class="tags"><span class="tag warn">15:00 起飞</span><span class="tag good">12:25 前到 T2</span><span class="tag">免税离境核验</span><span class="tag">10:45 离开酒店</span></div></div></article>
       </div>
     </section>
 
@@ -357,7 +379,7 @@
     <section id="transport" class="panel">
       <div class="section-head"><div><div class="eyebrow" style="color:var(--red-dark)">Fare & admission</div><h2>交通、门票与和服精算</h2></div><p class="subtle">日元按 100 JPY ≈ ¥4.263 人民币换算；人民币为每人预算。</p></div>
       <div class="cost-grid grid">
-        <article class="cost-card"><h3>全程交通</h3><div class="amount">约 ¥550 / 人</div><p>逐段现行票价约 ¥490，另留约 ¥60 的公交换乘与走错站缓冲。没有必要买 JR Pass。</p></article>
+        <article class="cost-card"><h3>全程交通</h3><div class="amount">约 ¥700 / 人</div><p>已加入11.26难波—临空城—泉佐野购物线及回程票失效风险缓冲。没有必要买 JR Pass。</p></article>
         <article class="cost-card"><h3>景区门票</h3><div class="amount">约 ¥145–188 / 人</div><p>基础含天龙寺庭园、清水寺、永观堂夜枫、南禅寺一处与东大寺；上限加入可选堂内参观。</p></article>
         <article class="cost-card"><h3>两人和服</h3><div class="amount">约 ¥328–516 / 2 人</div><p>Wargo 情侣线上价 ¥7,700 起；按红叶旺季最高加价 ¥2,200/人预留上限，摄影自理。</p></article>
       </div>
@@ -370,7 +392,7 @@
           <tr><td>11.23 京都 ↔ 岚山</td><td>JR/岚电按 IC 卡实付，预留 ¥500</td><td>清晨 JR 去、傍晚按拥堵选择 JR 或岚电</td><td>约 ¥21</td></tr>
           <tr><td>11.24 东山一日</td><td>地下铁·巴士一日券 ¥1,100</td><td>当天多次换乘，购买一日券</td><td>约 ¥47</td></tr>
           <tr><td>11.25 京都 → 有马</td><td>京都市内 ¥500 + 直达高速巴士 ¥2,000</td><td>15:10 京都站八条口 → 16:25 有马温泉；提前 1 个月预约</td><td>约 ¥107</td></tr>
-          <tr><td>11.26 有马 → 难波</td><td>有马→三宫巴士 ¥780；阪神三宫→大阪难波 ¥420；大阪市内 ¥240</td><td>采用当前可执行的三宫换乘，避开停运中的大阪直达班次</td><td>约 ¥61</td></tr>
+          <tr><td>11.26 有马 → 难波 → 临空城 → 泉佐野 → 难波</td><td>有马至难波约 ¥1,440；临空城数字票 ¥2,190（含 ¥1,000购物券）；泉佐野回难波另预留约 ¥650</td><td>难波寄存行李后去奥莱；数字票在泉佐野提前出站后的剩余效力须现场确认</td><td>约 ¥182</td></tr>
           <tr><td>11.27 难波 ↔ 奈良</td><td>近铁普通票 ¥680 × 2；奈良市内留 ¥250</td><td>快速急行直达，不加购特急</td><td>约 ¥69</td></tr>
           <tr><td>11.28 难波 → KIX T2</td><td>Rapi:t 数字票 ¥1,410；大阪市内 ¥240；T2 接驳免费</td><td>10:45 离开难波酒店，最晚 11:15 上车；关西机场站后至 Aeroplaza 1F，接驳 7–9 分钟，12:25 前到 T2</td><td>约 ¥70</td></tr>
         </tbody>
@@ -394,6 +416,7 @@
         <a href="https://www.city.kyoto.lg.jp/kotsu/page/0000028378.html" target="_blank" rel="noreferrer">京都一日券</a>
         <a href="https://www.keihanbus.jp/highway/line/kyoto-arima_onsen/" target="_blank" rel="noreferrer">京都—有马巴士</a>
         <a href="https://www.nankai.co.jp/en_railway/ticket/rapit" target="_blank" rel="noreferrer">南海 Rapi:t</a>
+        <a href="https://www.nankai.co.jp/en_railway/ticket/rinku" target="_blank" rel="noreferrer">临空城数字票</a>
         <a href="https://www.kansai-airport.or.jp/en/access/t2/" target="_blank" rel="noreferrer">KIX T2 接驳</a>
         <a href="https://jp.springairlines.cn/flights/service-guide-airport-traffic" target="_blank" rel="noreferrer">春秋 9C 日本出发值机</a>
         <a href="https://kyotokimonorental.com/zh-cn/plan/kimono" target="_blank" rel="noreferrer">Wargo 价格</a>
@@ -409,7 +432,7 @@
         <article class="meal-day"><div class="meal-date">11.23<br>岚山</div><div><h3>手打荞麦 + 京味甜品 + 晚间拉面</h3><p>早餐便利店/咖啡 ¥600–800；午餐岚山よしむら，红叶季菜单可能调整，现行套餐约 ¥1,740–2,380；下午抹茶/团子 ¥600–900；晚餐拉面 ¥1,000–1,400。</p></div><div class="meal-cost">¥4,000–5,500</div></article>
         <article class="meal-day"><div class="meal-date">11.24<br>东山</div><div><h3>和服日不吃太撑：京荞麦/湯叶 → 祇园甜品 → おばんざい</h3><p>换装前早餐 ¥600–800；午餐にしんそば约 ¥1,560 或湯叶膳 ¥1,940；下午抹茶 ¥700–1,000；还衣后吃家常京都小菜，预留 ¥2,500–3,500。</p></div><div class="meal-cost">¥5,400–7,200</div></article>
         <article class="meal-day"><div class="meal-date">11.25<br>有马</div><div><h3>白天轻食，把胃口留给旅馆会席</h3><p>早餐 ¥600–800；京都午餐乌冬/定食 ¥1,200–1,800；温泉街碳酸煎饼等 ¥600–900。旅馆晚餐已计入一泊二食，不重复列支。</p></div><div class="meal-cost">¥2,400–3,500</div></article>
-        <article class="meal-day"><div class="meal-date">11.26<br>大阪</div><div><h3>大阪街头组合：551 + 章鱼烧 + 大阪烧</h3><p>旅馆早餐已含；551 豚包 2 个 ¥500 可两人分；章鱼烧预留 ¥700–900；千房道顿堀烧 ¥1,480 起，可两人再共享一份铁板小菜。</p></div><div class="meal-cost">¥3,200–4,800</div></article>
+        <article class="meal-day"><div class="meal-date">11.26<br>临空城</div><div><h3>购物日快餐：旅馆早餐 → 奥莱轻午餐 → 难波夜宵</h3><p>旅馆早餐已含；临空城 Food Park 用乌冬/丼饭控制在 ¥900–1,400，避免正餐排队；回难波后再吃章鱼烧、大阪烧或拉面，预留 ¥1,500–2,500。</p></div><div class="meal-cost">¥2,400–3,900</div></article>
         <article class="meal-day"><div class="meal-date">11.27<br>奈良</div><div><h3>柿叶寿司与三轮素面，晚餐回大阪吃串炸</h3><p>平宗茶粥·柿叶膳 ¥1,940 或煮面膳 ¥2,100；奈良小食 ¥500–800；大阪晚餐串炸/居酒屋按 ¥2,500–3,500 控制。</p></div><div class="meal-cost">¥5,600–7,100</div></article>
         <article class="meal-day"><div class="meal-date">11.28<br>返程</div><div><h3>07:30 早餐 + T2 午餐，不在市区排队</h3><p>早餐 ¥600–800；上午补货时只买可带走的小食。12:00–12:25 到 T2，13:00 办完值机后在航站楼吃午餐并准备机上饮水，预留 ¥1,200–1,800；春秋 9C 不把机上餐当作默认选项。</p></div><div class="meal-cost">¥1,800–2,600</div></article>
       </div>
@@ -424,13 +447,86 @@
       </div>
     </section>
 
+    <section id="shopping" class="panel">
+      <div class="section-head"><div><div class="eyebrow" style="color:var(--red-dark)">Value-first shopping</div><h2>购物捡漏 · Black Friday 合并版</h2></div><p class="subtle">目标是买到超值商品，不是买齐品牌；购物金额不计入旅行预算。</p></div>
+
+      <article class="deal-hero">
+        <div class="eyebrow">Confirmed · 官方已公布</div>
+        <h2>临空城 Black Friday：11.20–11.29</h2>
+        <p>本次旅行 11.22–11.28 <strong>全程处于官方活动期</strong>，因此 11.26 必须保留为主购物日。具体参加品牌、折扣商品和限量活动尚未发布；官方通常临近活动才上线品牌明细，不能把“全场活动”理解为每家店统一折扣。</p>
+        <div class="route-links">
+          <a href="https://www.premiumoutlets.co.jp/en/schedule/" target="_blank" rel="noreferrer">2026 官方促销日历 ↗</a>
+          <a href="https://www.premiumoutlets.co.jp/en/rinku/brands/" target="_blank" rel="noreferrer">临空城品牌地图 ↗</a>
+          <a href="https://www.premiumoutlets.co.jp/rinku/events/" target="_blank" rel="noreferrer">临空城活动更新 ↗</a>
+        </div>
+      </article>
+
+      <div class="deal-grid grid">
+        <article class="deal-card"><span class="deal-status confirmed">已确认</span><h3>临空城 Premium Outlets</h3><p>11.20–29 官方 Black Friday。始祖鸟、ASICS、KEEN、Mammut、鬼冢虎、Polo Ralph Lauren 等均有门店，但各店额外折扣待公布。</p></article>
+        <article class="deal-card"><span class="deal-status likely">高概率</span><h3>Alpen Outdoors 难波</h3><p>2025 全国门店黑五为 11.21–12.1，TNF、Columbia、Mammut 等有特价。2026 尚未官宣，但时间与本次旅行高度吻合，11.27 奈良返程后重点检查。</p></article>
+        <article class="deal-card"><span class="deal-status likely">高概率</span><h3>UNIQLO 感谢祭</h3><p>2025 秋季感谢祭为 11.21–27，含 HEATTECH、抓绒和冬装限时价。2026 秋季日期尚未公布；若延续节奏，11.22–27 很可能覆盖。</p></article>
+        <article class="deal-card"><span class="deal-status likely">高概率</span><h3>Lululemon Black Friday</h3><p>日本官网 2025 有 Black Friday 先行通知，历史上也做过门店活动。2026规则未公布；优先御堂筋店降价区，先问“Black Friday markdown”。</p></article>
+        <article class="deal-card"><span class="deal-status watch">只监测</span><h3>ASICS / ASICS Walking</h3><p>ASICS有“GRATEFUL FRIDAY”页面；ASICS Walking 2025曾做会员限定最高20%OFF。临空城奥莱能否叠加须以店头牌为准，建议提前注册 OneASICS。</p></article>
+        <article class="deal-card"><span class="deal-status watch">不要押注</span><h3>Montbell / Patagonia直营 / 鬼冢虎正价店</h3><p>没有足够可靠的日本门店黑五规律。Montbell以日本定价和免税为主；Patagonia直营通常不靠黑五；鬼冢虎城市店用于找新款与颜色，不作为低价主战场。</p></article>
+      </div>
+
+      <div class="section-head" style="margin-top:32px"><div><h2>11.26 主路线 · 先抢低库存</h2></div><p class="subtle">店铺顺序按“折扣上限 × 缺码速度”排列。</p></div>
+      <div class="card card-pad">
+        <div class="shop-route">
+          <div class="shop-time">10:30</div><div class="shop-step"><h3>抵达难波，酒店寄存行李</h3><p>不等待入住；从南海难波前往临空城。若购买数字套票，到 Main Side 1F 服务台兑换 ¥1,000 购物券。</p></div>
+          <div class="shop-time">12:00–15:20</div><div class="shop-step"><h3>Seaside区：始祖鸟 → DESCENTE → KEEN → TNF → HOKA → Polo → 鬼冢虎</h3><p>始祖鸟先看稀缺尺码；KEEN约 ¥6,000/双可视为强捡漏参考；Polo男装通常比女装更易出现深折；鬼冢虎适合买旧款和断码，不追热门新款。</p></div>
+          <div class="shop-time">15:20–15:50</div><div class="shop-step"><h3>Food Park 快速午餐</h3><p>控制在30分钟，不为餐厅排队。顺手整理已买商品、拍吊牌和小票，避免后续重复购买。</p></div>
+          <div class="shop-time">15:50–17:50</div><div class="shop-step"><h3>Main Side：ASICS → Mammut → Columbia/Mountain Hardwear → Mizuno</h3><p>ASICS优先试跑鞋；近期折扣案例中 Kayano 31 叠加活动与免税后约 ¥12,145，仅作阈值参考。Mammut实用款命中率可能高于始祖鸟。</p></div>
+          <div class="shop-time">18:00–19:40</div><div class="shop-step"><h3>临空城 → 泉佐野2nd STREET</h3><p>中古仓库限时80分钟：户外外套 → 男装 → 鞋 → 背包。库存完全随机，不把“必须买到某品牌”作为目标。</p></div>
+          <div class="shop-time">20:00后</div><div class="shop-step"><h3>泉佐野 → 难波晚餐</h3><p>回程票若在泉佐野提前出站可能失效，购买南海数字票前向工作人员确认；必要时单买泉佐野至难波车票。</p></div>
+        </div>
+      </div>
+
+      <div class="section-head" style="margin-top:32px"><div><h2>11.27 城市补货</h2></div><p class="subtle">奈良照常保留，按返程时间做减法。</p></div>
+      <table class="comparison" aria-label="城市购物补货路线">
+        <thead><tr><th>回到难波时间</th><th>路线</th><th>购买重点</th><th>主动放弃</th></tr></thead>
+        <tbody>
+          <tr><td>17:30 前</td><td>Alpen Outdoors 60分 → Montbell 25分 → Lululemon 25分 → 两家2nd STREET 50分</td><td>Alpen黑五户外特价；Montbell明确需求；Lulu降价架；中古Polo/户外</td><td>UNIQLO另择时间，不把五站全部硬塞</td></tr>
+          <tr><td>18:30 后</td><td>Alpen Outdoors 60分 → 2nd STREET或UNIQLO二选一</td><td>只抓确定有活动或高随机收益的店</td><td>Montbell、Lulu通常20:00关门，直接跳过</td></tr>
+        </tbody>
+      </table>
+      <div class="source-chips">
+        <a href="https://store.alpen-group.jp/Form/RealShop/ShopDetail.aspx?rsid=2139" target="_blank" rel="noreferrer">Alpen 难波</a>
+        <a href="https://nambaparks.com/foreign/duty-free" target="_blank" rel="noreferrer">难波Parks免税店</a>
+        <a href="https://store.montbell.jp/search/shopinfo/?shop_no=678624" target="_blank" rel="noreferrer">Montbell大丸心斋桥</a>
+        <a href="https://www.lululemon.co.jp/ja-jp/stores?storeId=49184" target="_blank" rel="noreferrer">Lululemon御堂筋</a>
+        <a href="https://www.2ndstreet.jp/shop/details?shopsId=30892" target="_blank" rel="noreferrer">2nd STREET心斋桥</a>
+        <a href="https://www.2ndstreet.jp/shop/details?shopsId=31374" target="_blank" rel="noreferrer">2nd STREET心斋桥南</a>
+      </div>
+
+      <div class="section-head" style="margin-top:32px"><div><h2>到价才买 · 现场判断线</h2></div></div>
+      <div class="threshold">
+        <div><strong>便宜 ≤15%</strong><span>通常不买；不足以补偿断码、退换与携带成本。</span></div>
+        <div><strong>约日本正价7折</strong><span>进入试穿区；尺码、颜色、用途三项都合适才买。</span></div>
+        <div><strong>6折及以下</strong><span>高优先级；确认并非瑕疵、奥莱专供低配或不可退换。</span></div>
+        <div><strong>中古低于新品40%+</strong><span>才承担成色与真伪风险；检查压胶、气味、污渍和货号。</span></div>
+      </div>
+
+      <div class="risk"><strong>2026年免税方式已改变：</strong>从 11 月 1 日起，店内先按含税价付款；离境时经海关确认商品已携带出境后，再由商店或返款服务商退还消费税。每店每天税前合计至少 ¥5,000；食品、化妆品若在日本境内使用，将无法通过离境核验。返程日应比普通流程多留免税核验时间，并把免税商品放在可出示的位置。</div>
+      <div class="source-chips">
+        <a href="https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00021.html" target="_blank" rel="noreferrer">观光厅：2026免税新规</a>
+        <a href="https://www.nta.go.jp/about/introduction/torikumi/report/2025/04_3.htm" target="_blank" rel="noreferrer">国税厅：Refund方式</a>
+        <a href="https://www.uniqlo.com/jp/ja/spl" target="_blank" rel="noreferrer">UNIQLO活动页</a>
+        <a href="https://www.lululemon.co.jp/ja-jp/c/sale/specials" target="_blank" rel="noreferrer">Lululemon降价区</a>
+        <a href="https://www.asics.com/jp/ja-jp/grateful-Friday/c/ja80001000/" target="_blank" rel="noreferrer">ASICS Grateful Friday</a>
+        <a href="https://www.2ndstreet.jp/event" target="_blank" rel="noreferrer">2nd STREET活动页</a>
+      </div>
+
+      <div class="notice"><strong>活动复查节奏：</strong>10月末查看临空城11月专题；11月10日前后核对UNIQLO感谢祭、Lululemon邮件和Alpen公告；11月20日活动开场后再做一次最终品牌折扣表。大丸、阪急、Grand Front、难波Parks目前没有可用于2026决策的统一黑五公告，不能把商场积分或会员卡折扣提前计入。</div>
+    </section>
+
     <section id="budget" class="panel">
       <div class="section-head"><div><div class="eyebrow" style="color:var(--red-dark)">Per-person budget</div><h2>完整预算 · 按每人 ¥8,000–12,000</h2></div><p class="subtle">包含饮食；只排除药妆、服装和伴手礼等购物。</p></div>
       <div class="budget-layout grid">
         <aside class="total">
           <div class="eyebrow">2 人基础方案完整小计</div>
-          <div class="total-number" id="totalTwo">¥16,799</div>
-          <div id="perPerson">约 ¥8,400 / 人</div>
+          <div class="total-number" id="totalTwo">¥16,999</div>
+          <div id="perPerson">约 ¥8,500 / 人</div>
           <div class="bar"><span id="budgetBar"></span></div>
           <small>进度条以每人上限 ¥12,000 为 100%。当前数字已经加入交通、门票、和服、饮食和 ¥800/人的机动金。</small>
         </aside>
@@ -440,7 +536,7 @@
           <div class="ledger-row"><div><strong>有马 1 晚</strong><span>有马御苑一泊二食官方早鸟基线 ¥20,900/人</span></div><b>约 ¥1,782</b></div>
           <div class="ledger-row"><div><strong>大阪 2 晚</strong><span>APA难波站前塔楼；税前</span></div><b>¥1,152</b></div>
           <div class="ledger-row"><div><strong>住宿税预留</strong><span>京都约 ¥51/人 + 大阪约 ¥17/人</span></div><b>¥140</b></div>
-          <div class="ledger-row"><div><strong>全程交通</strong><span>逐段约 ¥490/人，含 IC 卡换乘缓冲</span></div><b>¥1,200</b></div>
+          <div class="ledger-row"><div><strong>全程交通</strong><span>含临空城—泉佐野购物线、数字票与提前出站缓冲</span></div><b>¥1,400</b></div>
           <div class="ledger-row"><div><strong>景点门票</strong><span>采用含可选堂内参观的上限</span></div><b>¥376</b></div>
           <div class="ledger-row"><div><strong>两人和服</strong><span>情侣套餐 + 红叶旺季最高加价预留</span></div><b>¥516</b></div>
           <div class="ledger-row"><div><strong>全程饮食</strong><span>约 ¥1,700/人；有马会席已计入住宿</span></div><b>¥3,400</b></div>
@@ -449,9 +545,9 @@
         </div>
       </div>
       <div class="budget-note">
-        <div><span class="subtle">基础性价比</span><strong>约 ¥8,400/人</strong><span>APA 京都 + 有马一泊二食 + APA 难波</span></div>
-        <div><span class="subtle">京都改住町家</span><strong>约 ¥8,650–9,170/人</strong><span>仍在预算下半区，换取生活感与拍照氛围</span></div>
-        <div><span class="subtle">大阪升级光芒酒店</span><strong>再加约 ¥636/人</strong><span>基础方案升级后约 ¥9,040/人</span></div>
+        <div><span class="subtle">基础性价比</span><strong>约 ¥8,500/人</strong><span>APA 京都 + 有马一泊二食 + APA 难波，含购物线交通</span></div>
+        <div><span class="subtle">京都改住町家</span><strong>约 ¥8,750–9,270/人</strong><span>仍在预算下半区，换取生活感与拍照氛围</span></div>
+        <div><span class="subtle">大阪升级光芒酒店</span><strong>再加约 ¥636/人</strong><span>基础方案升级后约 ¥9,140/人</span></div>
       </div>
       <div class="notice"><strong>住宿税：</strong>京都 2026-03-01 起按每人每晚税前房价分档，当前 APA 预算按 ¥400/人/晚预留；大阪自 2025-09-01 起，¥5,000–15,000/人/晚收 ¥200。实际以结算页与入住现场为准。</div>
 
@@ -470,7 +566,7 @@
         <a href="https://www.todaiji.or.jp/information/haikan/" target="_blank" rel="noreferrer"><strong>东大寺</strong><br><span class="subtle">大佛殿 2026 参拜价</span></a>
         <a href="https://jp.springairlines.cn/flights/service-guide-airport-traffic" target="_blank" rel="noreferrer"><strong>春秋航空</strong><br><span class="subtle">9C 日本出发国际线值机时限</span></a>
       </div>
-      <p class="updated">已补齐：2026 夜枫日期、逐段交通、核心门票、两人和服、逐日餐费及 9C6566 返程倒推时间。下一轮只需锁定住宿房型与最终餐厅预约。</p>
+      <p class="updated">已补齐：2026 夜枫日期、逐段交通、核心门票、两人和服、逐日餐费、Black Friday购物线、免税新规及 9C6566 返程倒推时间。临空城品牌级折扣将在官方11月专题发布后更新。</p>
     </section>
   </main>
 
@@ -491,7 +587,7 @@
     function updateBudget() {
       const choice = document.querySelector('input[name="kyoto"]:checked');
       const kyoto = Number(choice.value);
-      const fixedExcludingKyoto = 14066;
+      const fixedExcludingKyoto = 14266;
       const total = fixedExcludingKyoto + kyoto;
       const each = total / 2;
       document.getElementById('kyotoName').textContent = choice.dataset.label;
